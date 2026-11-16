@@ -1,13 +1,11 @@
-# 当前推荐入口
+# 推荐运行入口
 
-- Run-BatchModels.ps1 + BatchModels.cs：PPT 第二页至末页的 20 个编号模型。
-- Inspect-Deliverables.ps1：只读检查保存的原生文件副本。
-- Make-Overview.ps1：生成模型总览；使用 Windows 自带 System.Drawing。
-- Read-AllPages.ps1：只读导出 PPT 页面。
+- Run-BatchModels.ps1 + BatchModels.cs：创建 20 个编号原生模型。
 - Test-SolidWorks.ps1：只读 COM 连接测试。
+- Inspect-Deliverables.ps1：只读复核保存的原生零件副本。
+- Make-Overview.ps1：使用 Windows System.Drawing 生成两张总览图。
+- Read-AllPages.ps1：可选 PowerPoint 导出工具，需自行在项目根目录提供输入 PPT。
 
-New-*.ps1、Inspect-Demos.ps1、Read-Page2.ps1 属于前期试验脚本；Make-Overview.py 是未采用的 Pillow 版本，本机缺少该依赖，请使用同名 PowerShell 脚本。
+请使用 Windows PowerShell，并修改各脚本中的接口库路径以匹配本机安装位置。重建指定编号会覆盖对应成果。运行步骤与模型限制见根目录 README。
 
-“历史_”开头的脚本及宏仅供追溯，其中手写 STEP 导入路线失败且已停止。Macro1.swp 为用户此前已有的宏，内容未检查。
-
-统一成果目录与页码对应见 ../deliverables/README.md。
+历史宏、早期试验脚本和本机证书诊断脚本仅本地保留，不在公开提交中。

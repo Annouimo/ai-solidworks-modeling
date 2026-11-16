@@ -17,3 +17,4 @@
 ~$*
 *.tmp
 *.bak
+/local-only/

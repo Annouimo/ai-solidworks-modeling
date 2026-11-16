@@ -10,7 +10,7 @@
 
 | 内容 | 位置 |
 |---|---|
-| 原始课件 | [平面立体(2).ppt](deliverables/平面立体(2).ppt) |
+| 输入来源 | 教学课件《平面立体(2)》；公开版本不分发原始课件 |
 | 原生零件 | [deliverables/SolidWorks/](deliverables/SolidWorks/) |
 | STEP 模型 | [deliverables/STEP/](deliverables/STEP/) |
 | 零件1～10 总览 | [overview1.png](deliverables/previews/overview1.png) |
@@ -29,7 +29,7 @@
 .
 ├─ README.md                 本说明
 ├─ deliverables/
-│  ├─ 平面立体(2).ppt         输入课件
+│  ├─ 平面立体(2).ppt         输入课件（仅本地保留）
 │  ├─ README.md               页码与模型对应说明
 │  ├─ 模型清单.csv            编号、文件与校验值
 │  ├─ SolidWorks/             所有生成的原生零件
@@ -148,7 +148,7 @@ powershell.exe -NoProfile -File .\scripts\Make-Overview.ps1
 ## 其他参考材料
 
 - [详细调试经验](docs/lessons.md)：包含早期试验过程，阅读时以末尾的批量经验补充为准。
-- [人工模型风格观察](docs/demo-modeling-style.md)：对三个 demo 的特征树和草图做了分析，作为参考，不作为建模方法的强制要求。
+- 人工模型风格观察（仅本地留档）：对三个 demo 的特征树和草图做了分析，作为参考，不作为建模方法的强制要求。
 - [脚本索引](scripts/README.md)：区分当前推荐入口、早期试验及历史宏。
 
 建议优先从 `deliverables/` 查看成果，再阅读 `BatchModels.cs` 理解如何把一个确定的几何方案转成 API 调用。
