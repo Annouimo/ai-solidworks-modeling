@@ -1,0 +1,6 @@
+*.cs text eol=lf
+*.ps1 text eol=crlf
+*.md text eol=lf
+*.SLDPRT binary
+*.STEP binary
+*.png binary

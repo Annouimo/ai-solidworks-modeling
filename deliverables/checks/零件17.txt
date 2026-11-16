@@ -1,0 +1,5 @@
+﻿id=17
+page=16
+solid_bodies=1
+volume_mm3=300000
+step_roundtrip=passed
