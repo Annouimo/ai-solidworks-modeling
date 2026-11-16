@@ -9,6 +9,8 @@
 /deliverables/checks/batch.log
 /scripts/历史_*
 /scripts/New-*.ps1
+!/scripts/New-Spring.ps1
+!/scripts/New-GearBearingAssembly.ps1
 /scripts/Inspect-Demos.ps1
 /scripts/Read-Page2.ps1
 /scripts/Organize-History.ps1

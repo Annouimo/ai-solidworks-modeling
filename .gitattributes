@@ -4,3 +4,4 @@
 *.SLDPRT binary
 *.STEP binary
 *.png binary
+*.SLDASM binary

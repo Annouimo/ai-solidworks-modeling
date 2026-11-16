@@ -23,6 +23,13 @@
 
 原生零件目录另保留 3 个以 `试验_` 开头的早期模型，STEP 目录另有 2 个早期导出。它们不属于本批 20 个编号成果的验收范围。仅查看模型可直接打开文件，无需运行脚本。
 
+## 独立建模示例
+
+- [10 圈弹簧](deliverables/examples/spring/Spring_10T.SLDPRT)使用原生螺旋线和圆截面扫描。
+- [齿轮、轴与滑动轴承装配体](deliverables/examples/gear-bearing/GearBearingAssembly.SLDASM)包含三个原生零件和四个配合。[等轴测预览](deliverables/examples/gear-bearing/GearBearingAssembly.png)
+
+运行方式见[脚本说明](scripts/README.md#独立建模示例)，建模步骤和实测结果见[经验记录](docs/lessons.md)。
+
 ## 目录结构
 
 ```text
@@ -155,6 +162,6 @@ powershell.exe -NoProfile -File .\scripts\Make-Overview.ps1
 
 ## GitHub 公开版本
 
-公开提交包含核心脚本、20 个编号模型与 STEP、两张总览、模型清单和最终检查记录。原始课件、demo、早期模型、历史脚本及完整日志仅在本地保留，未公开；文档中的完整工作区目录和历史材料链接不代表这些材料随仓库分发。
+公开提交包含核心脚本、20 个编号模型与 STEP、两张总览、模型清单、最终检查记录，以及独立建模示例。原始课件、demo、早期模型、历史脚本及完整日志仅在本地保留，未公开；文档中的完整工作区目录和历史材料链接不代表这些材料随仓库分发。
 
 课件的公开分发权限尚未核实，因此不上传原始课件。当前尚未选择开源许可证，公开可见不等于授予额外使用许可。
