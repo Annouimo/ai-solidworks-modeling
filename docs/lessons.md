@@ -47,3 +47,25 @@
 对称截面和非平行截面放样应明确顶点对应关系；本批采用逐顶点直线导引线，修复了自动对齐导致的扭转。实体合法且体积为正不能证明几何正确，必须查看预览。
 
 SaveAs 导出 STEP 前明确用完整原生文件路径激活目标文档。回读检查采用唯一临时文件名并重命名导入文档，避免同名原生/导入文档混淆；只关闭本次创建的文档，不按通配名称清理用户未保存文件。
+
+## 10 圈弹簧：螺旋线与圆截面扫描
+
+- 先在基准面画圆，用圆的直径作为弹簧的平均圈径。再调用 `InsertHelix` 按节距和圈数定义螺旋线（定义方式为 `0`）。读取特征里的实际圈数和节距，确认与输入一致。
+- 将螺旋线以选择标记 `4` 选为扫描路径，启用 `InsertProtrusionSwept4` 的圆形截面选项并传入线径。这样可直接生成原生扫描实体，无须另建钢丝截面草图。平均圈径和线径是两个不同的输入，外径为两者之和。
+- 重建后确认只有一个实体，再用「钢丝截面积 × 螺旋线长度」核对体积。默认参数为 10 圈、平均圈径 30 mm、线径 3 mm、节距 8 mm，螺旋线的轴向行程为 80 mm。SolidWorks 本次测得实体体积为 6687.52 mm³，通过脚本设定的 1% 体积核对。
+
+脚本见 [New-Spring.ps1](../scripts/New-Spring.ps1)，实测模型见 [Spring_10T.SLDPRT](../deliverables/examples/spring/Spring_10T.SLDPRT)。
+
+## 齿轮、轴与轴承：用配合表达自由度
+
+- 分别保存带法兰的滑动轴承、台阶轴和 24 齿直齿轮，再插入装配体。按几何特征识别圆柱面和台肩端面，再用 `GetCorrespondingEntity` 将零件面转换为装配体里的面。这样可以直接选取实际接触面建立配合。
+- 固定轴承。轴与轴承用同心配合对正轴线，保留相对转动，再用端面重合约束轴向位置。齿轮与轴也用同心和端面重合，这组同心配合启用 `LockRotation`，使齿轮与轴一起转。零件的初始位置只用于放置，最后由这四个配合决定运动关系。
+- 重建后检查零件数、位置和方向，再运行实体干涉检查。检查时不将重合接触面计为干涉。本次确认有三个零件、四个配合、零实体干涉，并查看了等轴测预览。相对转动关系由配合设置确定，本次没有单独做拖动或运动仿真实测。齿廓由分段直线近似，未进行齿轮啮合校验。
+
+脚本见 [New-GearBearingAssembly.ps1](../scripts/New-GearBearingAssembly.ps1) 和 [GearBearingAssembly.cs](../scripts/GearBearingAssembly.cs)，成果见 [装配体](../deliverables/examples/gear-bearing/GearBearingAssembly.SLDASM) 与 [预览](../deliverables/examples/gear-bearing/GearBearingAssembly.png)。
+
+## 本次脚本运行排错
+
+- 项目旧脚本里的 D 盘接口库路径在本机已失效。新入口优先从 SolidWorks 的注册信息定位安装目录，也可用 `-InteropPath` 指定接口库。两份模型用本机 SolidWorks 2025 的零件和装配体模板生成。
+- Windows PowerShell 用 `-File` 运行时，本次在参数默认值中读取 `$PSScriptRoot` 得到空路径。改为在参数声明之后，根据 `$PSCommandPath` 推导项目输出目录。执行策略只在本次启动命令中指定 `RemoteSigned`。
+- 受限会话尝试启动 SolidWorks 时返回 `0x80070005`，切到有权限的桌面会话后成功。遇到这类错误时先区分 COM 启动或连接失败与特征建模失败。
